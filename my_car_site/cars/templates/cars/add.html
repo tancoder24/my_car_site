@@ -2,7 +2,22 @@
 
 {% block content %}
 
+<div class='container'>
+    <h1>ADD.HTML</h1>
+    <h2>Add a new car to database</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="brand">Car Brand</label>
+            <input type="text" id="brand" name="brand">
+        </div>
+        <div class="form-group">
+            <label for="year">Car Year</label>
+            <input type="text" id="year" name="year">
+        </div>
+        <input type="submit">
+    </form>
+</div>
 
-<h1>ADD.HTML</h1>
 
 {% endblock %}
