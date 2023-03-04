@@ -1,8 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, CreateView, ListView
 from classroom.forms import ContactForm
 from django.urls import reverse_lazy
 from classroom.models import Teacher
+
+from django.views.generic import (TemplateView, 
+                                  FormView, 
+                                  CreateView, 
+                                  ListView,
+                                  DetailView)
+
 
 # Create your views here.
 # def home_view(request):
@@ -43,3 +49,7 @@ class ContactFormView(FormView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+    
+class TeacherDetailView(DetailView):
+    # template = model_detail.html
+    model=Teacher
