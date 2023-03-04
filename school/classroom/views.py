@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, CreateView
 from classroom.forms import ContactForm
 from django.urls import reverse_lazy
+from classroom.models import Teacher
 
 # Create your views here.
 # def home_view(request):
@@ -12,6 +13,17 @@ class HomeView(TemplateView):
 
 class ThankYouView(TemplateView):
     template_name = 'classroom/thank_you.html' 
+
+class TeacherCreateView(CreateView):
+    model = Teacher
+    fields = "__all__"
+    
+    # for template name django will auto matically look for
+    # model_form.html in template folder 
+
+    success_url =reverse_lazy("classroom:thank_you") 
+
+
 
 class ContactFormView(FormView):
     form_class = ContactForm
