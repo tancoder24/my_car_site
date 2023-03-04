@@ -1,0 +1,22 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title> rental_review</title>
+  <link rel="stylesheet" href="{% static 'car/custom.css' %}"
+</head>
+
+<body>
+    <div class="myform">
+        <h1>Rental Review Form Page<h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_ul}}    
+                <input type="submit">
+            </form>
+    </div>
+
+</body>
+</html>
