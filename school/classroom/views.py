@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, CreateView
+from django.views.generic import TemplateView, FormView, CreateView, ListView
 from classroom.forms import ContactForm
 from django.urls import reverse_lazy
 from classroom.models import Teacher
@@ -23,7 +23,14 @@ class TeacherCreateView(CreateView):
 
     success_url =reverse_lazy("classroom:thank_you") 
 
+class TeacherListView(ListView):
+    model = Teacher
 
+    # qeuryset = Teacher.objects.all() # default
+    qeuryset = Teacher.objects.order_by('first_name')
+
+    # default template django look for is model_list.html
+    context_object_name = "teacher_list"
 
 class ContactFormView(FormView):
     form_class = ContactForm
