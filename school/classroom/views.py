@@ -7,7 +7,8 @@ from django.views.generic import (TemplateView,
                                   FormView, 
                                   CreateView, 
                                   ListView,
-                                  DetailView)
+                                  DetailView,
+                                  UpdateView)
 
 
 # Create your views here.
@@ -53,3 +54,10 @@ class ContactFormView(FormView):
 class TeacherDetailView(DetailView):
     # template = model_detail.html
     model=Teacher
+
+class TeacherUpdateView(UpdateView):
+    # share model_form.html, same as createView
+    model = Teacher
+    fields = "__all__"
+
+    success_url =reverse_lazy("classroom:list_teacher") 
