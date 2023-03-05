@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (HomeView, ThankYouView, 
                     ContactFormView, TeacherCreateView, 
                     TeacherListView, TeacherDetailView,
-                    TeacherUpdateView)
+                    TeacherUpdateView, TeacherDeleteView)
 
 app_name = 'classroom'
 
@@ -14,4 +14,6 @@ urlpatterns = [
     path('list_teacher/', TeacherListView.as_view(), name="list_teacher"),
     path('teacher_detail/<int:pk>', TeacherDetailView.as_view(), name="detail_teacher"),
     path('update_teacher/<int:pk>', TeacherUpdateView.as_view(), name="update_teacher"),
+    path('delete_teacher/<int:pk>', TeacherDeleteView.as_view(), name="delete_teacher"),
+
 ]

@@ -8,7 +8,8 @@ from django.views.generic import (TemplateView,
                                   CreateView, 
                                   ListView,
                                   DetailView,
-                                  UpdateView)
+                                  UpdateView,
+                                  DeleteView)
 
 
 # Create your views here.
@@ -61,3 +62,10 @@ class TeacherUpdateView(UpdateView):
     fields = "__all__"
 
     success_url =reverse_lazy("classroom:list_teacher") 
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    success_url =reverse_lazy("classroom:list_teacher") 
+
+    # default template name
+    # model_confirm_delete.html
